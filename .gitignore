@@ -1,0 +1,15 @@
+*jar
+.cake
+.DS_Store
+.lein-deps-sum
+.lein-env
+.lein-failures
+.lein-plugins
+.lein-repl-history
+/checkouts
+/classes
+/docs
+/lib
+/target
+/targets
+pom.xml
