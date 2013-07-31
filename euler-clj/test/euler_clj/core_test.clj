@@ -2,6 +2,10 @@
   (:require [clojure.test :refer :all]
             [euler-clj.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest test-problem-1
+  (testing "Problem 1"
+    (is (= (problem-1 10) 23))))
+
+(deftest test-problem-1-smart
+  (testing "Problem 1 – Smarter Solution"
+    (is (= (problem-1-smart 10) 23))))
