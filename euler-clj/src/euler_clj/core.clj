@@ -34,7 +34,7 @@
     (fib* n 0 1)))
 
 (defn fib-seq
-  "Return a lazy sequence of the Fibonacci sequence."
+  "Return a lazy sequence of the Fibonacci numbers."
   []
   (map fib (range)))
 
@@ -42,3 +42,13 @@
   "Find the sum of the even terms Fibonacci sequence whose values are less than n."
   [n]
   (apply + (filter even? (take-while (partial > n) (fib-seq)))))
+
+(defn stepped-fib-seq
+  "Retur a lazy sequence of every nth Fibonacci numbers."
+  [step]
+  (map fib (iterate #(+ % step) step)))
+
+(defn problem-2-unfiltered
+  "Find the sum of the even terms Fibonacci sequence whose values are less than n."
+  [n]
+  (apply + (take-while (partial > n) (stepped-fib-seq 3))))
