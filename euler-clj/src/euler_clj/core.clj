@@ -56,18 +56,23 @@
 (defn prime?
   "Test if n is a prime number."
   [n]
-  (loop [p (int (math/floor (math/sqrt n)))]
-    (if (= p 1)
-      true
-      (if (= (mod n p) 0)
-        false
-        (recur (- p 1))))))
+  (case n
+    2 true
+    even? false
+    (loop [p (int (math/floor (math/sqrt n)))]
+      (if (= p 1)
+        true
+        (if (= (mod n p) 0)
+          false
+          (recur (- p 1)))))))
 
 (defn problem-3
   "Find the largest prime factor of n."
   [n]
   (loop [p (int (math/floor (math/sqrt n)))]
-    (if (and (= (mod n p) 0)
-             (prime? p))
+    (if (or (< p 3)
+            (and (= (mod n p) 0)
+                 (odd? p)
+                 (prime? p)))
       p
       (recur (- p 1)))))
