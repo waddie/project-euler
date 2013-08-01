@@ -18,3 +18,27 @@
   (- (+ (sum-divisible-by 3 (- n 1))
         (sum-divisible-by 5 (- n 1)))
      (sum-divisible-by 15 (- n 1))))
+
+(defn- fib*
+  "Calculate the nth Fibonacci number."
+  [n p0 p1]
+  (if (= n 1)
+    p1
+    (recur (- n 1) (bigint p1) (bigint (+ p0 p1)))))
+
+(defn fib
+  "Calculate the nth Fibonacci number."
+  [n]
+  (if (= n 0)
+    0
+    (fib* n 0 1)))
+
+(defn fib-seq
+  "Return a lazy sequence of the Fibonacci sequence."
+  []
+  (map fib (range)))
+
+(defn problem-2
+  "Find the sum of the even terms Fibonacci sequence whose values are less than n."
+  [n]
+  (apply + (filter even? (take-while (partial > n) (fib-seq)))))
