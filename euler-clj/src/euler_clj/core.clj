@@ -43,7 +43,7 @@
   (apply + (filter even? (take-while (partial > n) (fib-seq)))))
 
 (defn stepped-fib-seq
-  "Retur a lazy sequence of every nth Fibonacci numbers."
+  "Retur a lazy sequence of every nth Fibonacci number."
   [step]
   (map fib (iterate #(+ % step) step)))
 
