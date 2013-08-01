@@ -20,18 +20,17 @@
      (sum-divisible-by 15 (- n 1))))
 
 (defn- fib*
-  "Calculate the nth Fibonacci number."
+  "Calculate Fibonacci number Fn."
   [n p0 p1]
-  (if (= n 1)
-    p1
+  (case n
+    0 0N
+    1 (bigint p1)
     (recur (- n 1) (bigint p1) (bigint (+ p0 p1)))))
 
 (defn fib
-  "Calculate the nth Fibonacci number."
+  "Calculate Fibonacci number Fn."
   [n]
-  (if (= n 0)
-    0
-    (fib* n 0 1)))
+  (fib* n 0 1))
 
 (defn fib-seq
   "Return a lazy sequence of the Fibonacci numbers."
