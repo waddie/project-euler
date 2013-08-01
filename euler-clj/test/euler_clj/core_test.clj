@@ -21,3 +21,7 @@
 (deftest test-problem-2
   (testing "problem-2 for n = 90")
     (is (= (problem-2 90) 44)))
+
+(deftest test-problem-2-unfiltered
+  (testing "problem-2-unfiltered for n = 90")
+    (is (= (problem-2-unfiltered 90) 44)))
