@@ -1,6 +1,7 @@
 (ns euler-clj.core-test
   (:require [clojure.test :refer :all]
-            [euler-clj.core :refer :all]))
+            [euler-clj.core :refer :all]
+            [clojure.math.numeric-tower :as math]))
 
 (deftest test-problem-1
   (testing "problem-1 for n = 10"
@@ -25,3 +26,7 @@
 (deftest test-problem-2-unfiltered
   (testing "problem-2-unfiltered for n = 90")
     (is (= (problem-2-unfiltered 90) 44)))
+
+(deftest test-problem-3
+  (testing "problem-3 for n = 13195")
+    (is (= (problem-3 13195) 29)))

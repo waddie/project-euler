@@ -1,4 +1,5 @@
-(ns euler-clj.core)
+(ns euler-clj.core
+  (:require [clojure.math.numeric-tower :as math]))
 
 (defn problem-1
   "Find the sum of all the multiples of 3 or 5 below n."
@@ -43,7 +44,7 @@
   (apply + (filter even? (take-while (partial > n) (fib-seq)))))
 
 (defn stepped-fib-seq
-  "Retur a lazy sequence of every nth Fibonacci number."
+  "Return a lazy sequence of every nth Fibonacci number."
   [step]
   (map fib (iterate #(+ % step) step)))
 
@@ -51,3 +52,22 @@
   "Find the sum of the even terms Fibonacci sequence whose values are less than n."
   [n]
   (apply + (take-while (partial > n) (stepped-fib-seq 3))))
+
+(defn prime?
+  "Test if n is a prime number."
+  [n]
+  (loop [p (int (math/floor (math/sqrt n)))]
+    (if (= p 1)
+      true
+      (if (= (mod n p) 0)
+        false
+        (recur (- p 1))))))
+
+(defn problem-3
+  "Find the largest prime factor of n."
+  [n]
+  (loop [p (int (math/floor (math/sqrt n)))]
+    (if (and (= (mod n p) 0)
+             (prime? p))
+      p
+      (recur (- p 1)))))
