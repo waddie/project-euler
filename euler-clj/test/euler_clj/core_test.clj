@@ -9,9 +9,7 @@
 
 (deftest test-sum-divisible-by
   (testing "sum-divisible-by for n = 3, target = 10"
-    (is (= (sum-divisible-by 3 10) 18))))
-
-(deftest test-problem-1-smart
+    (is (= (sum-divisible-by 3 10) 18)))
   (testing "problem-1-smart for n = 10"
     (is (= (problem-1-smart 10) 23))))
 
@@ -21,9 +19,7 @@
 
 (deftest test-problem-2
   (testing "problem-2 for n = 90")
-    (is (= (problem-2 90) 44)))
-
-(deftest test-problem-2-unfiltered
+    (is (= (problem-2 90) 44))
   (testing "problem-2-unfiltered for n = 90")
     (is (= (problem-2-unfiltered 90) 44)))
 
@@ -32,3 +28,13 @@
     (is (= (problem-3 13195) 29))
   (testing "problem-3 for n = 7")
     (is (= (problem-3 7) 1)))
+
+(deftest test-problem-5
+  (testing "problem-5 for m = 1, n = 10")
+    (is (= (problem-5 1 10) '(2520))))
+
+(deftest test-problem-6
+  (testing "problem-6 for n = 10")
+    (is (= (problem-6 10) 2640))
+  (testing "problem-6-smart for n = 10")
+    (is (= (problem-6-smart 10) 2640)))

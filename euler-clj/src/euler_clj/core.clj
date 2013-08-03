@@ -93,9 +93,40 @@
   []
   (take 1 (reverse (sort (palindromes-for-problem-4)))))
 
+(defn problem-5
+  "Return the smallest integer evenly divisible by every integer from m to n."
+  [m n]
+  (take 1
+    (for [x     (iterate (partial + n) n)
+          :when (= (apply + (map #(mod x %) (range m n))) 0)]
+      x)))
+
+(defn squared-natural-numbers
+  "Return a lazy sequence of the natural numbers squared."
+  []
+  (map #(* % %) (drop 1 (range))))
+
+(defn problem-6
+  "Return the difference between the sum of the squares of the first n natural numbers, and the square of the sum."
+  [n]
+  (let [sum-of-squares (apply + (take n (squared-natural-numbers)))
+        sum            (apply + (take n (drop 1 (range))))
+        square-of-sum  (* sum sum)]
+    (math/abs (- square-of-sum sum-of-squares))))
+
+(defn problem-6-smart
+  "Return the difference between the sum of the squares of the first n natural numbers, and the square of the sum."
+  [n]
+  (let [m              (bigint n)
+        sum            (/ (* m (+ m 1)) 2)
+        sum-of-squares (/ (* (+ (* m 2) 1) (+ m 1) m) 6)]
+    (math/abs (- (* sum sum) sum-of-squares))))
+
 (defn -main
   [& args]
   (time (println "Problem 1: " (problem-1-smart 1000)))
   (time (println "Problem 2: " (problem-2-unfiltered 4000000)))
   (time (println "Problem 3: " (problem-3  600851475143)))
-  (time (println "Problem 4: " (problem-4))))
+  (time (println "Problem 4: " (problem-4)))
+  (time (println "Problem 5: " (problem-5 1 20)))
+  (time (println "Problem 6: " (problem-6-smart 100))))
