@@ -70,9 +70,14 @@
   "Find the largest prime factor of n."
   [n]
   (loop [p (int (math/floor (math/sqrt n)))]
-    (if (or (< p 3)
-            (and (= (mod n p) 0)
-                 (odd? p)
-                 (prime? p)))
+    (if (and (= (mod n p) 0)
+             (or (odd? p)
+                 (= p 2))
+             (prime? p))
       p
       (recur (- p 1)))))
+
+(defn problem-4
+  "Find the largest palindrome made from the product of two 3-digit numbers."
+  []
+  )
