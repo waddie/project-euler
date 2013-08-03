@@ -1,2 +1,2 @@
 #!/bin/sh
-drip -jar target/euler.jar -server -d64 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC
+java -jar target/euler.jar -server -d64 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC

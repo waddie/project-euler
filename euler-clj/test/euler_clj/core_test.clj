@@ -31,10 +31,14 @@
 
 (deftest test-problem-5
   (testing "problem-5 for m = 1, n = 10")
-    (is (= (problem-5 1 10) '(2520))))
+    (is (= (problem-5 1 10) 2520)))
 
 (deftest test-problem-6
   (testing "problem-6 for n = 10")
     (is (= (problem-6 10) 2640))
   (testing "problem-6-smart for n = 10")
     (is (= (problem-6-smart 10) 2640)))
+
+(deftest test-problem-7
+  (testing "problem-7 for n = 6")
+    (is (= (problem-7 6) 13)))
