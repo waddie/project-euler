@@ -1,5 +1,7 @@
 (ns euler-clj.core
-  (:require [clojure.math.numeric-tower :as math]))
+  (:require [clojure.math.numeric-tower :as math]
+            [clojure.string :as string])
+  (:gen-class))
 
 (defn problem-1
   "Find the sum of all the multiples of 3 or 5 below n."
@@ -77,7 +79,23 @@
       p
       (recur (- p 1)))))
 
+(defn palindromes-for-problem-4
+  "Return palindromes made from the product of two 3-digit numbers."
+  []
+  (for [x (range 100 1000)
+        y (range 100 1000)
+        :let  [z (* x y)]
+        :when (= (str z) (string/reverse (str z)))]
+    z))
+
 (defn problem-4
   "Find the largest palindrome made from the product of two 3-digit numbers."
   []
-  )
+  (take 1 (reverse (sort (palindromes-for-problem-4)))))
+
+(defn -main
+  [& args]
+  (time (println "Problem 1: " (problem-1-smart 1000)))
+  (time (println "Problem 2: " (problem-2-unfiltered 4000000)))
+  (time (println "Problem 3: " (problem-3  600851475143)))
+  (time (println "Problem 4: " (problem-4))))
