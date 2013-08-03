@@ -29,4 +29,6 @@
 
 (deftest test-problem-3
   (testing "problem-3 for n = 13195")
-    (is (= (problem-3 13195) 29)))
+    (is (= (problem-3 13195) 29))
+  (testing "problem-3 for n = 7")
+    (is (= (problem-3 7) 1)))
