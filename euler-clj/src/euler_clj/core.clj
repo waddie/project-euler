@@ -91,7 +91,7 @@
 (defn problem-4
   "Find the largest palindrome made from the product of two 3-digit numbers."
   []
-  (first (reverse (sort (palindromes-for-problem-4)))))
+  (apply max (palindromes-for-problem-4)))
 
 (defn problem-5
   "Return the smallest integer evenly divisible by every integer from m to n."
@@ -132,17 +132,13 @@
 (defn problem-8
   "Return the greatest product of 5 consecutive digits in a number."
   [n]
-  (let [p       (map #(java.lang.Integer/parseInt %) (rest(string/split (str problem-8-number) #"")))
-        result  (atom 0)]
-    (loop [sequence p]
-      (let [digits (take 5 sequence)]
-        (if (not-any? zero? digits)
-          (let [product (apply * digits)]
-            (if (> product @result)
-              (reset! result product))))
-        (if (< (count sequence) 6)
-          @result
-          (recur (rest sequence)))))))
+  (apply max
+    (loop [p      (map #(java.lang.Integer/parseInt %) (rest (string/split (str n) #"")))
+           result []]
+      (let [result (conj result (apply * (take 5 p)))]
+        (if (<= (count p) 5)
+          result
+          (recur (rest p) result))))))
 
 (defn -main
   [& args]
