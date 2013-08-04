@@ -135,10 +135,10 @@
   (apply max
     (loop [p (pmap #(bigint (java.lang.Integer/parseInt %)) (rest (string/split (str n) #"")))
            results []]
-      (let [results (conj results (apply * (take m p)))]
+      (let [new-results (conj results (apply * (take m p)))]
         (if (<= (count p) m)
-          results
-          (recur (rest p) results))))))
+          new-results
+          (recur (rest p) new-results))))))
 
 (defn -main
   [& args]
