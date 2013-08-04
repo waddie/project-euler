@@ -133,7 +133,7 @@
   "Return the greatest product of m consecutive digits in a number n."
   [m n]
   (apply max
-    (loop [p (pmap #(bigint (java.lang.Integer/parseInt %)) (rest (string/split (str n) #"")))
+    (loop [p (pmap #(bigint (java.lang.Integer/parseInt (str %))) (seq (str n)))
            results []]
       (let [new-results (conj results (apply * (take m p)))]
         (if (<= (count p) m)
