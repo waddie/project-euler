@@ -149,4 +149,5 @@
   (time (println "Problem 5: " (problem-5 1 20)))
   (time (println "Problem 6: " (problem-6-smart 100)))
   (time (println "Problem 7: " (problem-7 10001)))
-  (time (println "Problem 8: " (problem-8 5 problem-8-number))))
+  (time (println "Problem 8: " (problem-8 5 problem-8-number)))
+  (shutdown-agents))
